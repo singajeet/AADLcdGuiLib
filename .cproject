@@ -22,6 +22,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/arduino/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/arduino/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/Libraries/AADFontsLib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/Libraries/AADColorsLib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/Libraries/AADConfigLib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/Libraries/AADDriversInterface}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/Libraries/AADNokia1616LCDDriver}&quot;"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.cpp.sketch.input.356596100" name="CPP source files" superClass="it.baeyens.arduino.compiler.cpp.sketch.input"/>
 							</tool>
@@ -30,6 +34,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/arduino/core}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/arduino/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/Libraries/AADFontsLib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/Libraries/AADColorsLib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/Libraries/AADConfigLib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/Libraries/AADDriversInterface}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/AADLcdGuiLib/Libraries/AADNokia1616LCDDriver}&quot;"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.c.sketch.input.1970034558" name="C Source Files" superClass="it.baeyens.arduino.compiler.c.sketch.input"/>
 							</tool>

@@ -27,9 +27,29 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>Libraries/AADColorsLib</name>
+			<type>2</type>
+			<locationURI>ArduinoPrivateLibPath/AADColorsLib</locationURI>
+		</link>
+		<link>
+			<name>Libraries/AADConfigLib</name>
+			<type>2</type>
+			<locationURI>ArduinoPrivateLibPath/AADConfigLib</locationURI>
+		</link>
+		<link>
+			<name>Libraries/AADDriversInterface</name>
+			<type>2</type>
+			<locationURI>ArduinoPrivateLibPath/AADDriversInterface</locationURI>
+		</link>
+		<link>
 			<name>Libraries/AADFontsLib</name>
 			<type>2</type>
 			<locationURI>ArduinoPrivateLibPath/AADFontsLib</locationURI>
+		</link>
+		<link>
+			<name>Libraries/AADNokia1616LCDDriver</name>
+			<type>2</type>
+			<locationURI>ArduinoPrivateLibPath/AADNokia1616LCDDriver</locationURI>
 		</link>
 		<link>
 			<name>arduino/core</name>
