@@ -214,7 +214,7 @@ void Widget::draw(void){
 Panel::Panel(byte x, byte y, byte height, byte width, DesktopPane* desktopPane) :
 		RawPanel(x, y, height, width, desktopPane)
 {
-	_titlePanel = new TitlePanel("");
+	_titlePanel = new TitlePanel(_x-TITLE_PANE_DEFAULT_HEIGHT, _y, _width, TITLE_PANE_DEFAULT_HEIGHT, (String*)"", desktopPane);
 
 	_titlePanel->setX(_x-TITLE_PANE_DEFAULT_HEIGHT);
 	_titlePanel->setY(_y);
@@ -229,7 +229,7 @@ Panel::Panel(byte x, byte y, byte height, byte width, DesktopPane* desktopPane) 
 Panel::Panel(byte x, byte y, byte height, byte width, String* title, DesktopPane* desktopPane) :
 		RawPanel(x, y, height, width, desktopPane)
 {
-	_titlePanel = new TitlePanel(title);
+	_titlePanel = new TitlePanel(_x-TITLE_PANE_DEFAULT_HEIGHT, _y, _width, TITLE_PANE_DEFAULT_HEIGHT, title, desktopPane);
 
 	_titlePanel->setX(_x-TITLE_PANE_DEFAULT_HEIGHT);
 	_titlePanel->setY(_y);
@@ -316,7 +316,7 @@ DesktopPane::DesktopPane(){
 	_maxWidth = _driver->getMaxWidth();
 	_maxHeight = _driver->getMaxHeight();
 	_totalPixels = (_maxWidth * _maxHeight);
-	_displayPixelMap = (int*)malloc(sizeof(int) * _totalPixels);
+	_displayPixelMap = (unsigned int*)malloc(sizeof(unsigned int) * _totalPixels);
 
 	for(int i=0; i<_totalPixels; i++){
 		_displayPixelMap[i] = COL_WHITE;
@@ -324,12 +324,12 @@ DesktopPane::DesktopPane(){
 }
 
 unsigned int* DesktopPane::getDesktopPixelMapFor(byte x, byte y, byte width, byte height){
-	int *tempPixelMap = (int*)malloc(sizeof(int) * (width * height));
+	unsigned int *tempPixelMap = (unsigned int*)malloc(sizeof(unsigned int) * (width * height));
 	int pixelCounter = 0;
 	int startPos = 0;
 
 	for(int j=0; j<height; j++){
-		startPos = (_width*(y+j)) + x;
+		startPos = (_maxWidth*(y+j)) + x;
 		for(int i=0; i< width; i++){
 			tempPixelMap[pixelCounter++] = _displayPixelMap[startPos + i];
 		}
@@ -378,7 +378,7 @@ Panel* DesktopPane::findPanel(int panelId){
 }
 
 void DesktopPane::refresh(void){
-	_driver->renderFrame(_x, _y, _width, _height, _displayPixelMap, _totalPixels);
+	_driver->renderFrame(0, 0, _maxWidth, _maxHeight, _displayPixelMap, _totalPixels);
 }
 
 AADLCDDriversInterface* DesktopPane::getDriver(void){

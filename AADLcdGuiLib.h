@@ -16,7 +16,7 @@
 //add your includes for the project AADLcdGuiLib here
 
 class GUIObject{
-	private:
+	protected:
 		byte _id;
 		int _bgColor;
 		int _fgColor;
@@ -41,8 +41,8 @@ class GUIObject{
 class DesktopPane;
 
 class RawPanel : public GUIObject {
-	private:
-		byte _panelId;
+	protected:
+
 		byte _x;
 		byte _y;
 		byte _height;
@@ -52,9 +52,11 @@ class RawPanel : public GUIObject {
 		int _borderColor;
 		AADFonts* _defaultFont;
 		unsigned int* _bgPixelMap;
-		DesktopPane* _desktopPane;
 		
+
 	public:
+		byte _panelId;
+		DesktopPane* _desktopPane;
 		RawPanel(byte x, byte y, byte width, byte height, DesktopPane* desktopPane);
 		RawPanel(byte x, byte y, byte width, byte height);
 		virtual byte getBorder();
@@ -77,10 +79,12 @@ class RawPanel : public GUIObject {
 		virtual unsigned int* getPanelBgPixelMap();
 		virtual void setDesktopPane(DesktopPane* pane);
 		virtual void draw(void);
+
+		virtual ~RawPanel();
 };
 
 class TitlePanel : public RawPanel{
-	private:
+	protected:
 		String* _title;
 
 	public:
@@ -93,11 +97,12 @@ class TitlePanel : public RawPanel{
 class Panel;
 
 class Widget : public RawPanel{
-	private:
-		byte _widgetId;
+	protected:
+
 		Panel* _panel;
 
 	public:
+		byte _widgetId;
 		Widget(byte x, byte y, byte width, byte height, Panel* panel);
 		virtual byte getWidgetId(void);
 		virtual void setPanel(Panel* panel);
@@ -106,7 +111,7 @@ class Widget : public RawPanel{
 };
 
 class Panel : public RawPanel{
-	private:
+	protected:
 		TitlePanel* _titlePanel;
 		byte _level;
 		Widget* _widgets[];
@@ -127,8 +132,8 @@ class Panel : public RawPanel{
 		virtual void draw(void);
 };
 
-class DesktopPane : public RawPanel{
-	private:
+class DesktopPane : public GUIObject{//public RawPanel{
+	protected:
 		unsigned int* _displayPixelMap;
 		Panel* _panels[];
 		byte _panelCounter = 0;
