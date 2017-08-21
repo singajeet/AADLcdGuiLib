@@ -51,10 +51,11 @@ class RawPanel : public GUIObject {
 		byte _borderType;
 		int _borderColor;
 		AADFonts* _defaultFont;
-		int* _bgPixelMap;
+		unsigned int* _bgPixelMap;
 		DesktopPane* _desktopPane;
 		
 	public:
+		RawPanel(byte x, byte y, byte width, byte height, DesktopPane* desktopPane);
 		RawPanel(byte x, byte y, byte width, byte height);
 		virtual byte getBorder();
 		virtual void setBorder(byte border);
@@ -73,7 +74,7 @@ class RawPanel : public GUIObject {
 		virtual void setY(byte y);
 		virtual AADFonts* getDefaultFont();
 		virtual void setDefaultFont(AADFonts* defaultFont);
-		virtual int* getPanelBgPixelMap();
+		virtual unsigned int* getPanelBgPixelMap();
 		virtual void setDesktopPane(DesktopPane* pane);
 		virtual void draw(void);
 };
@@ -83,7 +84,7 @@ class TitlePanel : public RawPanel{
 		String* _title;
 
 	public:
-		TitlePanel(byte x, byte y, byte width, byte height, String* title);
+		TitlePanel(byte x, byte y, byte width, byte height, String* title, DesktopPane* desktopPane);
 		virtual  String* getTitle() ;
 		virtual void setTitle( String* title);
 		virtual void draw(void);
@@ -97,9 +98,11 @@ class Widget : public RawPanel{
 		Panel* _panel;
 
 	public:
+		Widget(byte x, byte y, byte width, byte height, Panel* panel);
 		virtual byte getWidgetId(void);
 		virtual void setPanel(Panel* panel);
 		virtual Panel* getPanel(void);
+		virtual void draw(void);
 };
 
 class Panel : public RawPanel{
@@ -111,8 +114,8 @@ class Panel : public RawPanel{
 
 
 	public:
-		Panel(byte x, byte y, byte width, byte height);
-		Panel(byte x, byte y, byte width, byte height, String* title);
+		Panel(byte x, byte y, byte width, byte height, DesktopPane* desktopPane);
+		Panel(byte x, byte y, byte width, byte height, String* title, DesktopPane* desktopPane);
 		virtual void setTitle(String* title);
 		virtual byte getLevel(void);
 		virtual void setLevel(byte level);
@@ -126,16 +129,17 @@ class Panel : public RawPanel{
 
 class DesktopPane : public RawPanel{
 	private:
-		int* _displayPixelMap;
+		unsigned int* _displayPixelMap;
 		Panel* _panels[];
 		byte _panelCounter = 0;
 		byte _maxWidth = 161;
 		byte _maxHeight = 131;
+		int _totalPixels = 0;
 		AADLCDDriversInterface* _driver;
 
 	public:
 		DesktopPane();
-		virtual int* getDesktopPixelMapFor(byte x, byte y, byte width, byte height);
+		virtual unsigned int* getDesktopPixelMapFor(byte x, byte y, byte width, byte height);
 		virtual void add(Panel* panel);
 		virtual void remove(Panel* panel);
 		virtual Panel* findPanel(int panelId);
